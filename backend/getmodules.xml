@@ -1,0 +1,124 @@
+<system hostname="192.168.0.58" brandname="Vutlan" brandext="vut" brandpen="39052" state="alarm" version="7.2.4 b235" type="VT335t" time="1753107693" optime="13244" uptime="424523" can_count="1" sd_count="1" rtspcam="0" sms="true" dubl="true" ntpserver="false" osdp="false" pdu="false" lora="false" cpuusage="2.9" memusage="60496" memtotal="117336"  >
+<modules>
+<module id="2001" pcode="2001" sn="0" clas="internal" type="devirt" name="Logics12" state="normal" />
+<module id="2002" pcode="2002" sn="0" clas="internal" type="notifier" name="Mails" state="normal" />
+<module id="2003" pcode="2003" sn="0" clas="internal" type="notifier" name="SMSs" state="normal" />
+<module id="2004" pcode="2004" sn="0" clas="internal" type="notifier" name="Traps" state="normal" />
+<module id="2005" pcode="2005" sn="0" clas="internal" type="devirt" name="Pings" state="normal" />
+<module id="2006" pcode="2006" sn="0" clas="internal" type="devirt" name="Timers" state="normal" />
+<module id="2007" pcode="2007" sn="0" clas="internal" type="devirt" name="Triggers" state="normal" />
+<module id="2008" pcode="2008" sn="0" clas="internal" type="devirt" name="SNMPGET sensors" state="not connected" />
+<module id="2009" pcode="2009" sn="0" clas="internal" type="devirt" name="Virtual sensors" state="normal" />
+<module id="2010" pcode="2010" sn="0" clas="internal" type="notifier" name="Web messages" state="normal" />
+<module id="2011" pcode="2011" sn="0" clas="internal" type="devirt" name="Modbus sensors" state="normal" />
+<module id="2012" pcode="2012" sn="0" clas="internal" type="notifier" name="Dial tasks" state="normal" />
+<module id="2020" pcode="2020" sn="0" clas="internal" type="onboard" name="Onboard" state="alarm" />
+<module id="2021" pcode="2021" sn="0" clas="internal" type="analog" name="Autodetect" state="normal" />
+<module id="2022" pcode="2022" sn="0" clas="internal" type="dry" name="Dry Contacts" state="alarm" />
+<module id="2023" pcode="2023" sn="0" clas="internal" type="outlet" name="Relays" state="normal" />
+<module id="2030" pcode="2030" sn="0" clas="internal" type="devhwr" name="VT7670 / VT7672 LTE modem" state="alarm" />
+<module id="2031" pcode="2031" sn="0" clas="internal" type="devhwr" name="Cameras" state="normal" />
+<module id="2500" pcode="6" sn="674" clas="can" type="VT440" name="VT440-000674" state="normal" />
+<module id="2501" pcode="8" sn="5368" clas="can" type="VT490" name="VT490-005368" state="warning" />
+</modules>
+<groups>
+<group id="3001" name="jjj" descr="" elements="107902,201901,202903,207904" modules="2003" state="normal" smask="2" notifiers="601001" disabled="0" timeout="0" disable_startup="0" />
+<group id="3002" name="test" descr="" elements="107902" modules="2002" state="normal" smask="2" notifiers="601001" disabled="0" timeout="0" disable_startup="0" />
+</groups>
+<elements>
+<element id="101001" module="2500" num="1" clas="discrete" type="dry" name="vt440-000674-dry-01" state="normal" value="0" view="0"  />
+<element id="101002" module="2500" num="2" clas="discrete" type="dry" name="vt440-000674-dry-02" state="normal" value="0" view="0"  />
+<element id="101003" module="2500" num="3" clas="discrete" type="dry" name="vt440-000674-dry-03" state="normal" value="0" view="0"  />
+<element id="101004" module="2500" num="4" clas="discrete" type="dry" name="vt440-000674-dry-04" state="normal" value="0" view="0"  />
+<element id="101005" module="2500" num="5" clas="discrete" type="dry" name="vt440-000674-dry-05" state="normal" value="0" view="0"  />
+<element id="101006" module="2500" num="6" clas="discrete" type="dry" name="vt440-000674-dry-06" state="normal" value="0" view="0"  />
+<element id="101007" module="2500" num="7" clas="discrete" type="dry" name="vt440-000674-dry-07" state="normal" value="0" view="0"  />
+<element id="101008" module="2500" num="8" clas="discrete" type="dry" name="vt440-000674-dry-08" state="normal" value="0" view="0"  />
+<element id="101009" module="2500" num="9" clas="discrete" type="dry" name="vt440-000674-dry-09" state="normal" value="0" view="0"  />
+<element id="101010" module="2500" num="10" clas="discrete" type="dry" name="vt440-000674-dry-10" state="normal" value="0" view="0"  />
+<element id="101011" module="2500" num="11" clas="discrete" type="dry" name="vt440-000674-dry-11" state="normal" value="0" view="0"  />
+<element id="101012" module="2500" num="12" clas="discrete" type="dry" name="vt440-000674-dry-12" state="normal" value="0" view="0"  />
+<element id="101013" module="2500" num="13" clas="discrete" type="dry" name="vt440-000674-dry-13" state="normal" value="0" view="0"  />
+<element id="101014" module="2500" num="14" clas="discrete" type="dry" name="vt440-000674-dry-14" state="normal" value="0" view="0"  />
+<element id="101015" module="2500" num="15" clas="discrete" type="dry" name="vt440-000674-dry-15" state="normal" value="0" view="0"  />
+<element id="101016" module="2500" num="16" clas="discrete" type="dry" name="vt440-000674-dry-16" state="normal" value="0" view="0"  />
+<element id="101017" module="2500" num="17" clas="discrete" type="dry" name="vt440-000674-dry-17" state="normal" value="0" view="0"  />
+<element id="101018" module="2500" num="18" clas="discrete" type="dry" name="vt440-000674-dry-18" state="normal" value="0" view="0"  />
+<element id="101019" module="2500" num="19" clas="discrete" type="dry" name="vt440-000674-dry-19" state="normal" value="0" view="0"  />
+<element id="101020" module="2500" num="20" clas="discrete" type="dry" name="vt440-000674-dry-20" state="normal" value="0" view="0"  />
+<element id="101021" module="2500" num="21" clas="discrete" type="dry" name="vt440-000674-dry-21" state="normal" value="0" view="0"  />
+<element id="101022" module="2500" num="22" clas="discrete" type="dry" name="vt440-000674-dry-22" state="normal" value="0" view="0"  />
+<element id="101023" module="2500" num="23" clas="discrete" type="dry" name="vt440-000674-dry-23" state="normal" value="0" view="0"  />
+<element id="101024" module="2500" num="24" clas="discrete" type="dry" name="vt440-000674-dry-24" state="normal" value="0" view="0"  />
+<element id="101025" module="2500" num="25" clas="discrete" type="dry" name="vt440-000674-dry-25" state="normal" value="0" view="0"  />
+<element id="101026" module="2500" num="26" clas="discrete" type="dry" name="vt440-000674-dry-26" state="normal" value="0" view="0"  />
+<element id="101027" module="2500" num="27" clas="discrete" type="dry" name="vt440-000674-dry-27" state="normal" value="0" view="0"  />
+<element id="101028" module="2500" num="28" clas="discrete" type="dry" name="vt440-000674-dry-28" state="normal" value="0" view="0"  />
+<element id="101029" module="2500" num="29" clas="discrete" type="dry" name="vt440-000674-dry-29" state="normal" value="0" view="0"  />
+<element id="101030" module="2500" num="30" clas="discrete" type="dry" name="vt440-000674-dry-30" state="normal" value="0" view="0"  />
+<element id="101031" module="2500" num="31" clas="discrete" type="dry" name="vt440-000674-dry-31" state="normal" value="0" view="0"  />
+<element id="101032" module="2500" num="32" clas="discrete" type="dry" name="vt440-000674-dry-32" state="normal" value="0" view="0"  />
+<element id="101033" module="2500" num="33" clas="discrete" type="dry" name="vt440-000674-dry-33" state="normal" value="0" view="0"  />
+<element id="101034" module="2500" num="34" clas="discrete" type="dry" name="vt440-000674-dry-34" state="normal" value="0" view="0"  />
+<element id="101035" module="2500" num="35" clas="discrete" type="dry" name="vt440-000674-dry-35" state="normal" value="0" view="0"  />
+<element id="101036" module="2500" num="36" clas="discrete" type="dry" name="vt440-000674-dry-36" state="normal" value="0" view="0"  />
+<element id="101037" module="2500" num="37" clas="discrete" type="dry" name="vt440-000674-dry-37" state="normal" value="0" view="0"  />
+<element id="101038" module="2500" num="38" clas="discrete" type="dry" name="vt440-000674-dry-38" state="normal" value="0" view="0"  />
+<element id="101039" module="2500" num="39" clas="discrete" type="dry" name="vt440-000674-dry-39" state="normal" value="0" view="0"  />
+<element id="101040" module="2500" num="40" clas="discrete" type="dry" name="vt440-000674-dry-40" state="normal" value="0" view="0"  />
+<element id="101041" module="2500" num="41" clas="discrete" type="dry" name="vt440-000674-dry-41" state="normal" value="0" view="0"  />
+<element id="101042" module="2500" num="42" clas="discrete" type="dry" name="vt440-000674-dry-42" state="normal" value="0" view="0"  />
+<element id="101043" module="2500" num="43" clas="discrete" type="dry" name="vt440-000674-dry-43" state="normal" value="0" view="0"  />
+<element id="101044" module="2500" num="44" clas="discrete" type="dry" name="vt440-000674-dry-44" state="normal" value="0" view="0"  />
+<element id="101045" module="2500" num="45" clas="discrete" type="dry" name="vt440-000674-dry-45" state="normal" value="0" view="0"  />
+<element id="101046" module="2500" num="46" clas="discrete" type="dry" name="vt440-000674-dry-46" state="normal" value="0" view="0"  />
+<element id="101047" module="2500" num="47" clas="discrete" type="dry" name="vt440-000674-dry-47" state="normal" value="0" view="0"  />
+<element id="101048" module="2500" num="48" clas="discrete" type="dry" name="vt440-000674-dry-48" state="normal" value="0" view="0"  />
+<element id="101049" module="2500" num="49" clas="discrete" type="dry" name="vt440-000674-dry-49" state="normal" value="0" view="0"  />
+<element id="101050" module="2500" num="50" clas="discrete" type="dry" name="vt440-000674-dry-50" state="normal" value="0" view="0"  />
+<element id="101051" module="2500" num="51" clas="discrete" type="dry" name="vt440-000674-dry-51" state="normal" value="0" view="0"  />
+<element id="101052" module="2500" num="52" clas="discrete" type="dry" name="vt440-000674-dry-52" state="normal" value="0" view="0"  />
+<element id="101053" module="2500" num="53" clas="discrete" type="dry" name="vt440-000674-dry-53" state="normal" value="0" view="0"  />
+<element id="101054" module="2500" num="54" clas="discrete" type="dry" name="vt440-000674-dry-54" state="normal" value="0" view="0"  />
+<element id="101055" module="2500" num="55" clas="discrete" type="dry" name="vt440-000674-dry-55" state="normal" value="0" view="0"  />
+<element id="101056" module="2500" num="56" clas="discrete" type="dry" name="vt440-000674-dry-56" state="normal" value="0" view="0"  />
+<element id="101057" module="2500" num="57" clas="discrete" type="dry" name="vt440-000674-dry-57" state="normal" value="0" view="0"  />
+<element id="101058" module="2500" num="58" clas="discrete" type="dry" name="vt440-000674-dry-58" state="normal" value="0" view="0"  />
+<element id="101059" module="2500" num="59" clas="discrete" type="dry" name="vt440-000674-dry-59" state="normal" value="0" view="0"  />
+<element id="101060" module="2500" num="60" clas="discrete" type="dry" name="vt440-000674-dry-60" state="normal" value="0" view="0"  />
+<element id="101061" module="2500" num="61" clas="discrete" type="dry" name="vt440-000674-dry-61" state="normal" value="0" view="0"  />
+<element id="101062" module="2500" num="62" clas="discrete" type="dry" name="vt440-000674-dry-62" state="normal" value="0" view="0"  />
+<element id="101063" module="2500" num="63" clas="discrete" type="dry" name="vt440-000674-dry-63" state="normal" value="0" view="0"  />
+<element id="101064" module="2500" num="64" clas="discrete" type="dry" name="vt440-000674-dry-64" state="normal" value="0" view="0"  />
+<element id="101951" module="2022" num="1" clas="discrete" type="dry" name="POWER SOURCE SIRI 5F" state="normal" value="0" view="0"  utype="onoff"  />
+<element id="101952" module="2022" num="2" clas="discrete" type="dry" name="Dry-2" state="alarm" value="1" view="0"  />
+<element id="101953" module="2022" num="3" clas="discrete" type="dry" name="Dry-3" state="normal" value="0" view="0"  />
+<element id="101954" module="2022" num="4" clas="discrete" type="dry" name="Dry-4" state="alarm" value="1" view="0"  />
+<element id="107902" module="2021" num="2" clas="discrete" type="water" name="Analog-2" state="normal" value="0" view="0"  />
+<element id="111901" module="2030" num="-2" clas="discrete" type="gsm state" name="GSM State" state="alarm" value="1" view="0"  />
+<element id="112901" module="2030" num="-3" clas="discrete" type="lte state" name="LTE State" state="not connected" value="0" view="0"  />
+<element id="201001" module="2501" num="1" clas="analog" type="temperature" name="vt490-005368-temperature" state="high warning" value="31.2" view="0"  um="°C"  />
+<element id="201901" module="2021" num="1" clas="analog" type="temperature" name="Temperature analog 1" state="normal" value="31.000" view="0"  um="°C"  />
+<element id="201999" module="2020" num="-1" clas="analog" type="temperature" name="Onboard Temperature" state="high warning" value="34.5" view="0"  um="°C"  />
+<element id="202001" module="2501" num="2" clas="analog" type="humidity" name="vt490-005368-humidity" state="normal" value="45.0" view="0"  um="%"  />
+<element id="202903" module="2021" num="3" clas="analog" type="humidity" name="Analog-3" state="normal" value="41.7" view="0"  um="%"  />
+<element id="203998" module="2020" num="-3" clas="analog" type="voltage" name="Voltage 2" state="low alarm" value="0" view="0"  um="V"  />
+<element id="203999" module="2020" num="-2" clas="analog" type="voltage" name="Voltage 1" state="low alarm" value="12.2" view="0"  um="V"  />
+<element id="218901" module="2030" num="-1" clas="analog" type="signal" name="GSM Signal Level" state="low alarm" value="0" view="0"  um="%"  />
+<element id="219904" module="2021" num="4" clas="analog" type="dust" name="Analog-4" state="normal" value="43.24" view="0"  um="μg/m3"  />
+<element id="301901" module="2020" num="-11" clas="switch" type="relay" name="Analog sensor power reset" state="on" value="1" view="0"  />
+<element id="304901" module="2020" num="-12" clas="switch" type="strobo" name="Alarm LED" state="off" value="0" view="0"  />
+<element id="304953" module="2023" num="1" clas="switch" type="strobo" name="Power-1" state="off" value="0" view="0"  />
+<element id="304954" module="2023" num="2" clas="switch" type="strobo" name="Power-2" state="off" value="0" view="0"  />
+<element id="402001" module="2031" num="1" clas="devhwr" type="ip-cam" name="ddd" state="normal" value="0" view="0"  />
+<element id="402002" module="2031" num="2" clas="devhwr" type="ip-cam" name="RedFox" state="normal" value="0" view="0"  />
+<element id="403001" module="2031" num="0" clas="devhwr" type="usb-cam" name="Web camera USB0" state="normal" value="0" view="0"  />
+<element id="503001" module="2001" num="4" clas="devirt" type="logic" name="POWER SOURCE SIRI 5F CUT OFF" state="normal" value="-" view="0"  />
+<element id="503002" module="2001" num="5" clas="devirt" type="logic" name="POWER SOURCE SIRI 5F TO NORMAL" state="normal" value="-" view="0"  />
+<element id="504001" module="2007" num="1" clas="devirt" type="trigger" name="Test" state="normal" value="0" view="0"  />
+<element id="504002" module="2007" num="2" clas="devirt" type="trigger" name="TRIGGER POWER 5F" state="normal" value="0" view="0"  />
+<element id="601001" module="2002" num="1" clas="notifier" type="mailer" name="gf" state="off" value="-" view="0"  />
+<element id="601002" module="2002" num="2" clas="notifier" type="mailer" name="Mail" state="off" value="-" view="0"  />
+<element id="603001" module="2003" num="1" clas="notifier" type="sms" name="SMS" state="off" value="-" view="0"  />
+</elements>
+</system>
