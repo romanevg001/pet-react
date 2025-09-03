@@ -13,7 +13,7 @@ import { useHeaderMessages } from "@/hooks/useHeaderMessages";
 export function useTodoQuery() {
   const page = useTodoQuery.page || 1;
 
-  console.log("useTodoQuery: page: ", page);
+  console.log("useTodoQuery: rerender ");
   const queryClient = useQueryClient();
 
   const { addMessage } = useHeaderMessages();
@@ -27,9 +27,16 @@ export function useTodoQuery() {
   });
 
   const getTodo = () => {
-    console.log("useTodoQuery getTodo");
 
     return useQuery(getTodoOptions);
+  };
+  const getTask = (id:string) => {
+    
+    return useQuery({
+      queryKey: [QueryTypeEnum.task, id],
+      async queryFn() { return httpCallJson<IResGetTodo>("tasks/"+id).then(t => new Task(t)) },
+      staleTime: Infinity,
+    });
   };
 
   const getStat = () => {
@@ -56,7 +63,6 @@ export function useTodoQuery() {
 
       async onSuccess(data) {
         doOnSuccess && doOnSuccess();
-        console.log("onSuccess invalidateQueries", [QueryTypeEnum.todo, page]);
         queryClient.invalidateQueries({
           queryKey: [QueryTypeEnum.todo],
         });
@@ -69,7 +75,6 @@ export function useTodoQuery() {
       mutationFn: (data: ITask) =>      httpCallJson<ITask[]>("tasks/" + data.id, "PUT", data),
       async onSuccess(data) {
         doOnSuccess && doOnSuccess();
-        console.log("editTask onSuccess invalidateQueries");
         queryClient.invalidateQueries({
           queryKey: [QueryTypeEnum.todo],
         });
@@ -87,7 +92,6 @@ export function useTodoQuery() {
 
       async onSuccess(_, deletedId) {
         queryClient.setQueryData(getTodoOptions.queryKey, (todo) => {
-          console.log("deleteTask tasks", todo);
           return {
             ...todo,
             data: todo?.data?.filter((item) => item.id !== deletedId),
@@ -96,7 +100,6 @@ export function useTodoQuery() {
       },
 
       async onSettled() {
-        console.log("deleteTask onSettled invalidateQueries");
 
         queryClient.invalidateQueries({
           queryKey: [QueryTypeEnum.todo],
@@ -121,7 +124,8 @@ export function useTodoQuery() {
     addTask,
     editTask,
     deleteTask,
-    getStat
+    getStat,
+    getTask
   };
 }
 

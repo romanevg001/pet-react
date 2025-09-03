@@ -24,15 +24,12 @@ export const EditAddTaskDialog =  ({editedTask, setEditedTask}: IEditAddTaskDial
 
 
   const [addTaskData, setAddTaskData] = useState(editedTask || new Task());
-  console.log('EditAddTaskDialog: ',editedTask, 'isEdit=',isEdit )
 
   const { handleSubmit, control, reset, formState } = useForm({
     defaultValues: editedTask || new Task(),
   });
 
   function onSuccess() {
-    console.log('onSuccess');
-
     reset();
     setEditedTask(undefined);
   };
@@ -46,7 +43,6 @@ export const EditAddTaskDialog =  ({editedTask, setEditedTask}: IEditAddTaskDial
     }
   };
 
-  console.log('AddTask rerender')
 
 
 

@@ -6,6 +6,7 @@ export enum QueryTypeEnum {
     "getmodules" = "getmodules",
     "getelement" = "getelement",
     "todo" = "todo",
+    "task" = "task",
     "deltask" = "deltask",
     "addtask" = "addtask",
 }

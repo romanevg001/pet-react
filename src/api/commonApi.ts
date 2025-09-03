@@ -17,7 +17,6 @@ export async function  httpCall<T>(querytype: QueryTypeEnum, data?: object): Pro
     };
 
     try {
-        console.log('==httpCall== fetch',querytype);
         return await fetch(globalConst.engine +'/'+ querytype + (params['id'] ? '_' + params['id'] : '' )+'.xml', { 
             method: "POST",
             body: JSON.stringify(params),
@@ -29,7 +28,6 @@ export async function  httpCall<T>(querytype: QueryTypeEnum, data?: object): Pro
             if(!xmlString){
                 throw new Error('empty');
             };
-            console.log('==httpCall== jsonObject',jsonObject);
             return jsonObject as T;
         });
     } catch (e: any) {
@@ -134,10 +132,6 @@ export async function  httpCallJson<T>(url: string,     methodOrOpt?: TMethod | 
 
         const _opt = defOpt ? Object.entries(defOpt).map(([key,value]) => key+'='+value).join('&') : '';
         
-
-        console.log('==httpCallJson== fetch','http://localhost:3000/' + url + (_opt ? '?'+_opt : ''));
-        console.log('==httpCallJson== _body',_body);
-
         const params = {   method:  _method   };
         if(_body) {
             params['body'] = JSON.stringify(_body);
@@ -145,7 +139,6 @@ export async function  httpCallJson<T>(url: string,     methodOrOpt?: TMethod | 
 
 
         return await fetch('http://localhost:3000/' + url + (_opt ? '?'+_opt : ''), params).then(resp => resp.json()).then(resp =>  {
-            console.log('==httpCallJson== jsonObject',resp);
             return resp;
         });
       /*  try { } catch (e: any) {

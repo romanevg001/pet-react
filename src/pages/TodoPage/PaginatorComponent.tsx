@@ -10,7 +10,6 @@ import { useState,  } from "react";
     
     const [first, setFirst] = useState(tasks?.first);
     const [rows, setRows] = useState(10);
-    console.log('PaginatorComponent tasks',tasks, first,rows, tasks?.items)
 
 
 

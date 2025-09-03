@@ -14,6 +14,9 @@ import { TicTacPage } from "@/pages/TicTacPage/TicTacPage";
 import ProjectsPage from "@/pages/ProjectsPage/ProjectsPage";
 import CreateEditProject from "@/pages/ProjectsPage/CreateEditProject";
 import TasksList from "@/pages/ProjectsPage/TasksList";
+import TaskPage from "@/pages/TodoPage/TaskPage/TaskPage";
+import TaskPageFormCustom from "@/pages/TodoPage/TaskPage/TaskPageFormCustom";
+import { TodoProvider } from "@/query/TodoProvider";
 
 /* const loadStore = () =>
   new Promise((resolve) => {
@@ -63,41 +66,26 @@ export const router = createBrowserRouter([
                 path: "todo",
                 element: <TodoPage />,
                 loader: () => {
-                
+                  
                 }
+            },
+            {
+                path: "todo/task/:taskId",
+                element: <TaskPage />,
+            },
+            {
+                path: "todo/task_fc/:taskId",
+                element: <TaskPageFormCustom />,
             },
             {
                 path: "search",
                 element: <SearchPage />,
-                loader: () => {
-                
-                }
             },
             {
                 path: "tic-tac",
                 element: <TicTacPage />,
-                loader: () => {
-                
-                }
             },
-            {
-                path: "projects",
-                element: <ProjectsPage />,
-                children: [
-                  {
-                      path: "add",
-                      element: <CreateEditProject />,
-                  },
-                  {
-                      path: "edit",
-                      element: <CreateEditProject />,
-                  },
-                  {
-                      path: ":id/tasks",
-                      element: <TasksList />,
-                  },
-                ]
-            }
+            
         ]
     }
             

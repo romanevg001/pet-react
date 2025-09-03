@@ -4,6 +4,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import logo from "@/brands/hanab/images/logo_header.svg";
 import {LayoutMessages} from "./LayoutMessages";
 import TodoStat from "../TodoPage/TodoStat";
+import Cart from "../Cart/Cart";
 
 export default function Layout(props) {
   
@@ -60,8 +61,8 @@ export default function Layout(props) {
           <PanelMenu model={items} className="w-full md:w-20rem" />
           <div className="flex-grow-1"><Outlet /></div>
           <aside>
-            <TodoStat ></TodoStat>
-
+            <div className="mb-3"><TodoStat >Out</TodoStat></div>
+            <Cart />
           </aside>
       </div>
 

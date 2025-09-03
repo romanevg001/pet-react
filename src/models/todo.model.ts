@@ -7,8 +7,8 @@ export interface ITask {
     count: number;
     unit: UnitEnum;
     done: boolean;
-    start: number;
-    end: number;
+    start: Date;
+    end: Date;
 }
 
 export enum UnitEnum {
@@ -23,12 +23,13 @@ export class Task extends BaseModel implements ITask {
     count = 0;
     unit = UnitEnum.peace;
     done = false;
-    start = Date.now();
-    end = Number(Date.now()) + 600000000;
+    start = new Date();
+    end = new Date(Number(Date.now()) + 600000000);
 
     constructor(o?: any) {
         super();
         super.checkFields(o);
+
     }
 }
 
