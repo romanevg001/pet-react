@@ -71,19 +71,4 @@ export function CartContextProvider({ children }) {
   );
 }
 
-/* 
-export interface ITodoContext {
-    getTodo: () => UseQueryResult<IResGetTodo | null, Error>;
-    addTask: (doOnSuccess?: () => void) => UseMutationResult<unknown, Error, ITask, unknown>;
-    editTask: () => UseMutationResult<ITask[] | null, Error, ITask, unknown>;
-    deleteTask: () => UseMutationResult<void | null, Error, string, unknown>;
-    page: number;
-    setPage: Dispatch<SetStateAction<number>>;
-}
 
-export namespace TodoProvider {
-  export const useTodoContext: ITodoContext = TodoProvider['useTodoContext'];
-
-}
- 
- */

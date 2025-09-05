@@ -1,61 +1,38 @@
-import type { IResGetTodo, ITask } from "@/models/todo.model";
-import {  type UseMutationResult, type UseQueryResult } from "@tanstack/react-query";
-import { createContext, use, useState, type Dispatch, type SetStateAction } from "react";
-import { useTodoQuery } from "./useTodoQuery";
+import { createContext, use, useState, type Context,  } from "react";
 
 
 
-const TodoProviderState = {
-  isTaskPageComponent: true
-}
+let saveValue = true;
 
 export function TodoProvider({children}) {
-  //const res = useTodoQuery();
-  const [isTaskPageComponent,_setTaskPageComponent] = useState(TodoProviderState.isTaskPageComponent);
+  const [isTaskPageComponent,_setTaskPageComponent] = useState(saveValue);
   
-  function setTaskPageComponent(val: boolean) {
-    TodoProviderState.isTaskPageComponent = val;
-    console.log('isTaskPageComponentisTaskPageComponent',val)
-    _setTaskPageComponent(val);
+  function setTaskPageComponent(v: boolean) {
+    saveValue = v;
+    _setTaskPageComponent(v)
   }
-  const res= {
+
+  const res = {
     isTaskPageComponent,
     setTaskPageComponent
   }
 
+  if(!TodoProvider['TodoCtx']) {
+      TodoProvider['TodoCtx'] = createContext<ITodoContext>(res);
+  }
 
-  const TodoCtx = createContext<ITodoContext>(res);
+  const TodoCtx = TodoProvider['TodoCtx'];
   
-
-  console.log('TodoProvider creating',res);  
-
-  TodoProvider['useTodoContext'] = use(TodoCtx);
-
-
   return (<TodoCtx value={res}>{children}</TodoCtx>)
 }
+
 export interface ITodoContext {
   isTaskPageComponent: boolean;
-  setTaskPageComponent: Dispatch<SetStateAction<boolean>>;
-}
-export namespace TodoProvider {
-  export const useTodoContext: ITodoContext = TodoProvider['useTodoContext'];
-
-}
-/* 
-export interface ITodoContext {
-    getTodo: () => UseQueryResult<IResGetTodo | null, Error>;
-    addTask: (doOnSuccess?: () => void) => UseMutationResult<unknown, Error, ITask, unknown>;
-    editTask: () => UseMutationResult<ITask[] | null, Error, ITask, unknown>;
-    deleteTask: () => UseMutationResult<void | null, Error, string, unknown>;
-    page: number;
-    setPage: Dispatch<SetStateAction<number>>;
+  setTaskPageComponent: (v:boolean)=>void;
 }
 
 export namespace TodoProvider {
-  export const useTodoContext: ITodoContext = TodoProvider['useTodoContext'];
+  export const TodoCtx: Context<ITodoContext> = TodoProvider['TodoCtx'];
 
 }
- 
- */
 

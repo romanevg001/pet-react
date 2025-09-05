@@ -7,6 +7,7 @@ export interface ITask {
     count: number;
     unit: UnitEnum;
     done: boolean;
+    price: number;
     start: Date;
     end: Date;
 }
@@ -23,6 +24,7 @@ export class Task extends BaseModel implements ITask {
     count = 0;
     unit = UnitEnum.peace;
     done = false;
+    price = 0;
     start = new Date();
     end = new Date(Number(Date.now()) + 600000000);
 

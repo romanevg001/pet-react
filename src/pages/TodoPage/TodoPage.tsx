@@ -4,8 +4,7 @@ import { Task, type ITask } from "@/models/todo.model";
 import TodoStat from "./TodoStat";
 import { useTodoQuery } from "@/query/useTodoQuery";
 import TodoList from "./TodoList";
-import Counter from "./Counter/Counter";
-import { TodoProvider } from "@/query/TodoProvider";
+import Cart from "../Cart/Cart";
 
 interface ITodoPageCtx {
   setPage: Dispatch<SetStateAction<number>>;
@@ -31,8 +30,9 @@ export default function TodoPage() {
   console.log('<TodoPage /> rernder');
 
   return (<div>
-    <TodoProvider>
+   
       <TodoStat>in</TodoStat>
+      <Cart />
       <EditAddTaskDialog key={editedTask?.id}  editedTask={editedTask} setEditedTask={setEditedTask} /> 
 
       <h1>TodoPage {page}</h1>
@@ -42,6 +42,6 @@ export default function TodoPage() {
    
         <TodoList></TodoList>
       </TodoPageCtx.Provider>
-    </TodoProvider>
+
   </div>);
 }

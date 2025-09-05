@@ -4,13 +4,13 @@ import Counter from "./Counter/Counter";
 import { TodoProvider } from "@/query/TodoProvider";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import { use } from "react";
 
 export default function TodoStat({children}) {
   const { getStat } = useTodoQuery();
   const { data: tasks } = getStat();
-  const { isTaskPageComponent, setTaskPageComponent } = TodoProvider.useTodoContext;
+  const { isTaskPageComponent, setTaskPageComponent } = use(TodoProvider?.TodoCtx);
 
-  console.log('TodoStat rerender',isTaskPageComponent, children)
 
   return (
     <Card title="Todo Statistics">
@@ -22,8 +22,7 @@ export default function TodoStat({children}) {
       {children}
 
       {tasks?.length && <Counter key={tasks?.length} initialCount={tasks?.length} />}
-
-       <FormControlLabel control={<Switch defaultChecked={isTaskPageComponent}  onChange={(e)=>setTaskPageComponent(e.target.checked)}  />} label="isTaskPageComponent" />
+       <FormControlLabel control={<Switch checked={isTaskPageComponent}  onChange={(e)=>setTaskPageComponent(e.target.checked)}  />} label="isTaskPageComponent" />
     </Card>
   );
 }

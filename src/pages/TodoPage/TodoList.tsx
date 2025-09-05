@@ -11,7 +11,7 @@ import { Button } from "primereact/button";
 
 export default function TodoList() {
     const todoPageCtx = use(TodoPageCtx);
-    const {isTaskPageComponent} = TodoProvider?.useTodoContext;
+    const {isTaskPageComponent} = use(TodoProvider?.TodoCtx);
     const {getTodo, deleteTask , editTask} = useTodoQuery();
     const {  data: tasks } = getTodo();
     const { mutate:mDeleteTask   } = deleteTask();
@@ -20,7 +20,6 @@ export default function TodoList() {
 
 
 return (<>
-    {todoPageCtx.val}
     <table className="w-full">
             <tbody>
                 {tasks && tasks?.data?.map((item) =><tr key={item.id}>

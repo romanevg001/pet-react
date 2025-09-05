@@ -36,6 +36,12 @@ export default function Layout(props) {
         template: itemRenderer
     },
     {
+      label: 'TodoRedux',
+      to: 'todo-redux',
+      template: itemRenderer,
+      
+    },
+    {
         label: 'search',
         to: 'search',
         template: itemRenderer
@@ -51,6 +57,7 @@ export default function Layout(props) {
       template: itemRenderer,
       
     },
+    
 
   ];
   return (<>

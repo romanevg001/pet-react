@@ -11,12 +11,9 @@ import { useModulesStore } from "../store/useModulesStore";
 import TodoPage from "@/pages/TodoPage/TodoPage";
 import SearchPage from "@/pages/SearchPage/SearchPage";
 import { TicTacPage } from "@/pages/TicTacPage/TicTacPage";
-import ProjectsPage from "@/pages/ProjectsPage/ProjectsPage";
-import CreateEditProject from "@/pages/ProjectsPage/CreateEditProject";
-import TasksList from "@/pages/ProjectsPage/TasksList";
 import TaskPage from "@/pages/TodoPage/TaskPage/TaskPage";
 import TaskPageFormCustom from "@/pages/TodoPage/TaskPage/TaskPageFormCustom";
-import { TodoProvider } from "@/query/TodoProvider";
+import { TodoReduxPage } from "@/pages/TodoReduxPage/TodoReduxPage";
 
 /* const loadStore = () =>
   new Promise((resolve) => {
@@ -85,6 +82,11 @@ export const router = createBrowserRouter([
                 path: "tic-tac",
                 element: <TicTacPage />,
             },
+            {
+                path: "todo-redux",
+                element: <TodoReduxPage />,
+            },
+            
             
         ]
     }

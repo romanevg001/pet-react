@@ -5,7 +5,10 @@
       "name": "vanila yougurt",
       "count": "3",
       "unit": "peace",
-      "done": false
+      "price": 100,
+      "done": false,
+      "start": 1755859527751,
+      "end": 1755859587751
     },
     {
       "id": "11",
@@ -13,6 +16,7 @@
       "count": 9,
       "unit": "peace",
       "done": true,
+      "price": 150.55,
       "start": 1755859527751,
       "end": 1755859587751
     },
@@ -22,6 +26,7 @@
       "count": 2,
       "unit": "kilo",
       "done": true,
+      "price": 10.8,
       "start": 1755859301000,
       "end": 1755919301000
     },
@@ -31,6 +36,7 @@
       "count": 5,
       "unit": "kilo",
       "done": false,
+      "price": 10.8,
       "start": 1755858231369,
       "end": 1755918231369
     },
@@ -40,6 +46,7 @@
       "count": 10,
       "unit": "kilo",
       "done": false,
+      "price": 10.8,
       "start": 1755858045080,
       "end": 1755918045080
     },
@@ -58,6 +65,7 @@
       "count": 1,
       "unit": "peace",
       "done": false,
+      "price": 10.8,
       "start": 1755852985666,
       "end": 1755912985666
     },
@@ -67,6 +75,7 @@
       "count": 1,
       "unit": "kilo",
       "done": false,
+      "price": 10.8,
       "start": 1755865336503,
       "end": 1755865396503
     },
@@ -76,15 +85,17 @@
       "count": 1,
       "unit": "kilo",
       "done": false,
+      "price": 10.8,
       "start": 1755868232956,
       "end": 1755868292956
     },
     {
       "id": "4383",
-      "name": "lamp",
+      "name": "lamb",
       "count": 1,
       "unit": "peace",
       "done": false,
+      "price": 10.8,
       "start": 1755869748773,
       "end": 1755875748773
     },
@@ -94,6 +105,7 @@
       "count": 5,
       "unit": "litr",
       "done": false,
+      "price": 1.01,
       "start": 1755869822279,
       "end": 1761869822279
     },
@@ -103,6 +115,7 @@
       "count": 1,
       "unit": "peace",
       "done": false,
+      "price": 112,
       "start": 1755869875975,
       "end": 1756469875975
     }
