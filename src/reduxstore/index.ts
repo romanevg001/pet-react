@@ -1,5 +1,7 @@
 import { configureStore} from '@reduxjs/toolkit';
-import { counterSlice } from './counter';
+import { counterSlice } from './counter-slice';
+import { uiSlice } from './ui-slice';
+import { taskSlice } from './task-slice';
 //import { Actions, type IAction, StoreStateModel } from './store.state.model';
 
 
@@ -18,7 +20,9 @@ export const reduxStore = createStore(storeReducer);
 */
 
 export const reduxStore = configureStore({reducer: {
-    counter: counterSlice.reducer
+    counter: counterSlice.reducer,
+    ui: uiSlice.reducer,
+    task: taskSlice.reducer
 }});
 
 export type IStoreState = ReturnType<typeof reduxStore.getState>;

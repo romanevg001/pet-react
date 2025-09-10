@@ -14,6 +14,7 @@ import { TicTacPage } from "@/pages/TicTacPage/TicTacPage";
 import TaskPage from "@/pages/TodoPage/TaskPage/TaskPage";
 import TaskPageFormCustom from "@/pages/TodoPage/TaskPage/TaskPageFormCustom";
 import { TodoReduxPage } from "@/pages/TodoReduxPage/TodoReduxPage";
+import { TaskReduxForm } from "@/pages/TodoReduxPage/TaskReduxForm";
 
 /* const loadStore = () =>
   new Promise((resolve) => {
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
             {
                 path: "todo-redux",
                 element: <TodoReduxPage />,
+            },
+            {
+                path: "todo-redux/task/:taskId",
+                element: <TaskReduxForm />,
             },
             
             

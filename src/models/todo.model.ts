@@ -61,4 +61,7 @@ export namespace TaskColumnsEnum {
 }
 
 
-
+export interface IAction<T> {
+    payload: T;
+    type: string;
+}

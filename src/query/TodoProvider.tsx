@@ -1,15 +1,26 @@
+import { uiSlice } from "@/reduxstore/ui-slice";
 import { createContext, use, useState, type Context,  } from "react";
+import { useDispatch } from "react-redux";
 
 
 
 let saveValue = true;
 
+
 export function TodoProvider({children}) {
   const [isTaskPageComponent,_setTaskPageComponent] = useState(saveValue);
+  const dispatch = useDispatch();
   
-  function setTaskPageComponent(v: boolean) {
-    saveValue = v;
-    _setTaskPageComponent(v)
+  function setTaskPageComponent(v: boolean | string) {
+    console.log('setTaskPageComponent=>',v)
+    if(typeof v == 'boolean') {
+      saveValue = v;
+      _setTaskPageComponent(v)
+    }
+
+    if(typeof v == 'string') {
+      dispatch(uiSlice.actions.setTodolistUrl(v)); 
+    }
   }
 
   const res = {
@@ -28,7 +39,7 @@ export function TodoProvider({children}) {
 
 export interface ITodoContext {
   isTaskPageComponent: boolean;
-  setTaskPageComponent: (v:boolean)=>void;
+  setTaskPageComponent: (v:boolean | string)=>void;
 }
 
 export namespace TodoProvider {

@@ -1,7 +1,12 @@
-import { counterSlice  } from "@/reduxstore/counter";
+import { counterSlice  } from "@/reduxstore/counter-slice";
 import type {  IStoreState  } from "@/reduxstore";
 import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
+import { use, useEffect } from "react";
+import { ReduxCounter } from "./ReduxCounter";
+import { TodoProvider } from "@/query/TodoProvider";
+import TodoList from "../TodoPage/TodoList";
+import { getTaskAction } from "@/reduxstore/task-slice";
 /* 
 import { Actions, type IStoreStateModel } from "@/reduxstore/store.state.model";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,15 +27,24 @@ export function TodoReduxPage() {
 
 
 export function TodoReduxPage() {
-    const counter = useSelector<IStoreState, number>(state=>state.counter.counter);
+    const {setTaskPageComponent} = use(TodoProvider?.TodoCtx);
     const dispatch = useDispatch();
+    
+    
+    useEffect(()=>{
+
+        setTaskPageComponent('/todo-redux/task');
+    },[setTaskPageComponent])
+
+    function onTaskClick(taskId) {
+         dispatch(getTaskAction(taskId))
+    }
 
     return (<>
-        <Button icon='pi pi-plus' text  onClick={(e)=>{ e.preventDefault();dispatch(counterSlice.actions.increment()) }} />
+        <ReduxCounter />
 
-       <div>{counter}</div> 
-        <Button icon='pi pi-minus' text  onClick={(e)=>{ e.preventDefault();dispatch(counterSlice.actions.decrement()) }} />
-        <Button icon='pi pi-plus' text  onClick={(e)=>{ e.preventDefault();dispatch(counterSlice.actions.increase({amount: 5})) }} >5</Button>
+
+        <TodoList onTaskClick={onTaskClick}></TodoList>
 
     </>);
 }

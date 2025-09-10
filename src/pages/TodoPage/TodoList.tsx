@@ -8,8 +8,10 @@ import { NavLink } from "react-router-dom";
 import { TodoProvider } from "@/query/TodoProvider";
 import { CartContext } from "../Cart/CartCtx";
 import { Button } from "primereact/button";
+import { useSelector } from "react-redux";
+import type { IStoreState } from "@/reduxstore";
 
-export default function TodoList() {
+export default function TodoList({onTaskClick = (id)=>{}}) {
     const todoPageCtx = use(TodoPageCtx);
     const {isTaskPageComponent} = use(TodoProvider?.TodoCtx);
     const {getTodo, deleteTask , editTask} = useTodoQuery();
@@ -17,6 +19,7 @@ export default function TodoList() {
     const { mutate:mDeleteTask   } = deleteTask();
     const { mutate:meditTask   } = editTask();
     const { addToCart, removeFromCart} = use(CartContext);
+    const todolistUrl = useSelector<IStoreState>(state=>state.ui.todolistUrl)
 
 
 return (<>
@@ -30,7 +33,7 @@ return (<>
                       <td key={key}  className=" p-2">
                         
                         { TaskColumnsEnum[key] == TaskColumnsEnum.name ? 
-                            <NavLink to={"/todo/task"+(isTaskPageComponent ? '' : '_fc')+"/"+item.id}> {item[key]} </NavLink>  
+                            <NavLink onClick={()=>onTaskClick(item.id)} to={(todolistUrl ? todolistUrl : "/todo/task"+(isTaskPageComponent ? '' : '_fc'))+"/"+item.id}> {item[key]} </NavLink>  
                             : 
                            (TaskColumnsEnum[key] == TaskColumnsEnum.start || TaskColumnsEnum[key] == TaskColumnsEnum.end) ? (new Intl.DateTimeFormat("ru",{ dateStyle: "full"}).format(item[key])) : item[key]
                         }
