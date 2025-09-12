@@ -33,18 +33,18 @@ export function TodoReduxPage() {
     
     useEffect(()=>{
 
-        setTaskPageComponent('/todo-redux/task');
+        setTaskPageComponent('task');
     },[setTaskPageComponent])
 
-    function onTaskClick(taskId) {
+   /*  function onTaskClick(taskId) {
          dispatch(getTaskAction(taskId))
-    }
+    } */
 
     return (<>
         <ReduxCounter />
 
 
-        <TodoList onTaskClick={onTaskClick}></TodoList>
+        <TodoList></TodoList>
 
     </>);
 }

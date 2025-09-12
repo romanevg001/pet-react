@@ -10,17 +10,21 @@ import SystreeQueryPage from "../pages/SystreePageQuery/SystreePageQuery";
 import { useModulesStore } from "../store/useModulesStore";
 import TodoPage from "@/pages/TodoPage/TodoPage";
 import SearchPage from "@/pages/SearchPage/SearchPage";
-import { TicTacPage } from "@/pages/TicTacPage/TicTacPage";
+import { TicTacPage, ticTacPageLoader } from "@/pages/TicTacPage/TicTacPage";
 import TaskPage from "@/pages/TodoPage/TaskPage/TaskPage";
 import TaskPageFormCustom from "@/pages/TodoPage/TaskPage/TaskPageFormCustom";
 import { TodoReduxPage } from "@/pages/TodoReduxPage/TodoReduxPage";
 import { TaskReduxForm } from "@/pages/TodoReduxPage/TaskReduxForm";
+import { getTaskAction } from "@/reduxstore/task-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { reduxStore } from "../reduxstore";
+import { httpCallJson } from "@/api/commonApi";
 
-/* const loadStore = () =>
+ const loadStore = () =>
   new Promise((resolve) => {
-    setTimeout(() => resolve(store), 0);
+    setTimeout(() => resolve(reduxStore), 0);
   });
- */
+
 
 
 
@@ -39,6 +43,7 @@ export const router = createBrowserRouter([
               return redirect("login");
             }
         }, 
+       // errorElement:  <LoginPage />,
        
         element: <Layout />,
         children:[
@@ -82,6 +87,7 @@ export const router = createBrowserRouter([
             {
                 path: "tic-tac",
                 element: <TicTacPage />,
+                loader: ticTacPageLoader
             },
             {
                 path: "todo-redux",
@@ -90,6 +96,11 @@ export const router = createBrowserRouter([
             {
                 path: "todo-redux/task/:taskId",
                 element: <TaskReduxForm />,
+                loader: ({params})=>{
+                  loadStore().then(async () => {
+                    reduxStore.dispatch(getTaskAction(params.taskId || ''));
+                  });
+                }
             },
             
             

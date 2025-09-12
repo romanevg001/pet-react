@@ -4,7 +4,7 @@ import { useTodoQuery } from "@/query/useTodoQuery";
 import { Checkbox } from "primereact/checkbox";
 import { TodoPageCtx } from "./TodoPage";
 import { use, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TodoProvider } from "@/query/TodoProvider";
 import { CartContext } from "../Cart/CartCtx";
 import { Button } from "primereact/button";
@@ -33,7 +33,7 @@ return (<>
                       <td key={key}  className=" p-2">
                         
                         { TaskColumnsEnum[key] == TaskColumnsEnum.name ? 
-                            <NavLink onClick={()=>onTaskClick(item.id)} to={(todolistUrl ? todolistUrl : "/todo/task"+(isTaskPageComponent ? '' : '_fc'))+"/"+item.id}> {item[key]} </NavLink>  
+                            <Link  onClick={()=>onTaskClick(item.id)} to={(todolistUrl ? todolistUrl : "task"+(isTaskPageComponent ? '' : '_fc'))+"/"+item.id}> {item[key]} </Link>  
                             : 
                            (TaskColumnsEnum[key] == TaskColumnsEnum.start || TaskColumnsEnum[key] == TaskColumnsEnum.end) ? (new Intl.DateTimeFormat("ru",{ dateStyle: "full"}).format(item[key])) : item[key]
                         }

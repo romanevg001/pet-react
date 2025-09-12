@@ -8,7 +8,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import dayjs, { Dayjs } from 'dayjs';
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFormCustom from "./useFormHook";
 
 import { useActionState } from "react";
@@ -41,7 +41,7 @@ export default function TaskPageFormCustom() {
   return (
     <>
       <h1>
-        TaskPage {params.taskId} {data?.name}
+        TaskPageFormCustom {params.taskId} {data?.name}
       </h1>
       {/*  <form action={formAction}> */}
       <form onSubmit={handleSubmit}>
@@ -151,6 +151,10 @@ export default function TaskPageFormCustom() {
           /*   disabled={formState.isSubmitting} */
         />
       </form>
+
+      <Link to="../.." relative="path">Back</Link>
+      
+
     </>
   );
 }

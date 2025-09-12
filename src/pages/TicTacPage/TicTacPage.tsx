@@ -2,49 +2,10 @@ import { useRef, useState } from "react";
 import Player from "./Player";
 import Board from "./Board";
 import RestartDialog, { type IRestartDialog } from "./RestartDialog";
+import { useLoaderData } from "react-router-dom";
+import { httpCallJson } from "@/api/commonApi";
+import { useHeaderMessages } from "@/hooks/useHeaderMessages";
 
-export const WINNING_COMBINATIONS = [
-  [
-    { row: 0, column: 0 },
-    { row: 0, column: 1 },
-    { row: 0, column: 2 },
-  ],
-  [
-    { row: 1, column: 0 },
-    { row: 1, column: 1 },
-    { row: 1, column: 2 },
-  ],
-  [
-    { row: 2, column: 0 },
-    { row: 2, column: 1 },
-    { row: 2, column: 2 },
-  ],
-  [
-    { row: 0, column: 0 },
-    { row: 1, column: 0 },
-    { row: 2, column: 0 },
-  ],
-  [
-    { row: 0, column: 1 },
-    { row: 1, column: 1 },
-    { row: 2, column: 1 },
-  ],
-  [
-    { row: 0, column: 2 },
-    { row: 1, column: 2 },
-    { row: 2, column: 2 },
-  ],
-  [
-    { row: 0, column: 0 },
-    { row: 1, column: 1 },
-    { row: 2, column: 2 },
-  ],
-  [
-    { row: 0, column: 2 },
-    { row: 1, column: 1 },
-    { row: 2, column: 0 },
-  ],
-];
 
 function getActivePlayer(gameTurns) {
     let player = 'X';
@@ -70,7 +31,7 @@ function getBoard(gameTurns) {
     return board;
 }
 
-function hasWinner(board) {
+function hasWinner(board, WINNING_COMBINATIONS) {
     let winner = null;
     for(const combination of WINNING_COMBINATIONS) {
         const squareCombination1 = board[combination[0].row][combination[0].column];
@@ -83,15 +44,21 @@ function hasWinner(board) {
     return winner;
 }
 
+export const ticTacPageLoader =  async ()=>{
+    return await httpCallJson('WINNING_COMBINATIONS');
+}
+
 
 
 export function TicTacPage() {
+  const WINNING_COMBINATIONS = useLoaderData();
+
   const dialogRef = useRef<IRestartDialog>(null);
   const [gameTurns, setGameTurns] = useState([]);
 
   const activePlayer = getActivePlayer(gameTurns);
   const board = getBoard(gameTurns);
-  const winner = hasWinner(board);
+  const winner = hasWinner(board, WINNING_COMBINATIONS);
  
 
   function handleSelectedSquare(row,col) {

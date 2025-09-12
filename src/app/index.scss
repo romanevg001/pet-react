@@ -12,3 +12,16 @@ html {
     font-size: 14px;
     background-color: #ccc;
 }
+
+menu {
+    li, a {
+            
+        color:darkslateblue;
+        text-decoration: none;
+        list-style: none ;
+
+        &.active {
+            color: darkviolet;
+        }
+    }
+}

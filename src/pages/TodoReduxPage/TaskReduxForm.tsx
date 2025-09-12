@@ -13,7 +13,7 @@ import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
 import { useActionState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export function TaskReduxForm() {
   const params = useParams();
@@ -102,6 +102,8 @@ export function TaskReduxForm() {
           /*   disabled={formState.isSubmitting} */
         />
       </form>
+      <Link to="../.." relative="path">Back</Link>
+
     </>
   );
 }
