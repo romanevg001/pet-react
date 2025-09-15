@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.scss';
 import { PrimeReactProvider } from 'primereact/api';
@@ -15,6 +15,7 @@ import { CartContextProvider } from '@/pages/Cart/CartCtx.tsx';
 import { TodoProvider } from '@/query/TodoProvider.tsx';
 import { Provider } from 'react-redux';
 import { reduxStore } from '../reduxstore';
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById('root')!).render(
     
          <StrictMode>
+          <Suspense fallback={<div className="absolute right-0 top-0 left-0 bottom-0 flex justify-content-center align-items-center"> <ProgressSpinner strokeWidth="8" /> </div>}>
           <Provider store={reduxStore}>
             <TodoProvider>
               <CartContextProvider>
@@ -39,6 +41,7 @@ createRoot(document.getElementById('root')!).render(
               </CartContextProvider>
             </TodoProvider>
           </Provider>
+          </Suspense>
         </StrictMode>
 
 

@@ -7,6 +7,7 @@ import { ReduxCounter } from "./ReduxCounter";
 import { TodoProvider } from "@/query/TodoProvider";
 import TodoList from "../TodoPage/TodoList";
 import { getTaskAction } from "@/reduxstore/task-slice";
+import { Link } from "react-router-dom";
 /* 
 import { Actions, type IStoreStateModel } from "@/reduxstore/store.state.model";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +27,7 @@ export function TodoReduxPage() {
 } */
 
 
-export function TodoReduxPage() {
+export default function TodoReduxPage() {
     const {setTaskPageComponent} = use(TodoProvider?.TodoCtx);
     const dispatch = useDispatch();
     
@@ -42,6 +43,8 @@ export function TodoReduxPage() {
 
     return (<>
         <ReduxCounter />
+
+        <Link to={'todo-add'}>todo-add</Link>
 
 
         <TodoList></TodoList>

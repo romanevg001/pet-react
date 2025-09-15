@@ -5,27 +5,29 @@ import LoginPage from "../pages/LoginPage";
 import Layout from "../pages/Layout/Layout";
 import Home from "../pages/Home";
 import { useAuthStore } from "../store/useAuthStore";
-import SystreePage from "../pages/SystreePage/SystreePage";
-import SystreeQueryPage from "../pages/SystreePageQuery/SystreePageQuery";
 import { useModulesStore } from "../store/useModulesStore";
-import TodoPage from "@/pages/TodoPage/TodoPage";
 import SearchPage from "@/pages/SearchPage/SearchPage";
-import { TicTacPage, ticTacPageLoader } from "@/pages/TicTacPage/TicTacPage";
 import TaskPage from "@/pages/TodoPage/TaskPage/TaskPage";
 import TaskPageFormCustom from "@/pages/TodoPage/TaskPage/TaskPageFormCustom";
-import { TodoReduxPage } from "@/pages/TodoReduxPage/TodoReduxPage";
-import { TaskReduxForm } from "@/pages/TodoReduxPage/TaskReduxForm";
+import { TaskReduxForm, taskReduxFormAction } from "@/pages/TodoReduxPage/TaskReduxForm";
 import { getTaskAction } from "@/reduxstore/task-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { reduxStore } from "../reduxstore";
 import { httpCallJson } from "@/api/commonApi";
+import { TaskActionForm, taskActionFormAction } from "@/pages/TodoReduxPage/TaskActionForm";
+import { lazy, Suspense } from "react";
+import { ProgressSpinner } from "primereact/progressspinner";
 
  const loadStore = () =>
   new Promise((resolve) => {
     setTimeout(() => resolve(reduxStore), 0);
   });
 
-
+const TodoReduxPage = lazy(()=>import("@/pages/TodoReduxPage/TodoReduxPage"));
+const TodoPage = lazy(()=>import("@/pages/TodoPage/TodoPage"));
+const TicTacPage = lazy(()=>import("@/pages/TicTacPage/TicTacPage"));
+const SystreePage = lazy(()=>import("@/pages/SystreePage/SystreePage"));
+const SystreeQueryPage = lazy(()=>import("@/pages/SystreePageQuery/SystreePageQuery"));
 
 
 export const router = createBrowserRouter([
@@ -61,16 +63,10 @@ export const router = createBrowserRouter([
             {
                 path: "systree-query",
                 element: <SystreeQueryPage />,
-                loader: () => {
-                
-                }
             },
             {
                 path: "todo",
                 element: <TodoPage />,
-                loader: () => {
-                  
-                }
             },
             {
                 path: "todo/task/:taskId",
@@ -87,21 +83,30 @@ export const router = createBrowserRouter([
             {
                 path: "tic-tac",
                 element: <TicTacPage />,
-                loader: ticTacPageLoader
+                loader: () => import("../pages/TicTacPage/TicTacPage").then(m=>m.ticTacPageLoader()) //ticTacPageLoader
             },
             {
                 path: "todo-redux",
-                element: <TodoReduxPage />,
+                element: <Suspense fallback={<div className="absolute right-0 top-0 left-0 bottom-0 flex justify-content-center align-items-center"> <ProgressSpinner strokeWidth="4" /> </div>}>
+                  <TodoReduxPage />
+                </Suspense>,
             },
             {
                 path: "todo-redux/task/:taskId",
                 element: <TaskReduxForm />,
+                action: taskReduxFormAction,
                 loader: ({params})=>{
                   loadStore().then(async () => {
                     reduxStore.dispatch(getTaskAction(params.taskId || ''));
                   });
                 }
             },
+            {
+                path: "todo-redux/todo-add",
+                element: <TaskActionForm />,
+                action: taskActionFormAction
+            },
+            
             
             
         ]

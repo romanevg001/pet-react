@@ -50,7 +50,7 @@ export const ticTacPageLoader =  async ()=>{
 
 
 
-export function TicTacPage() {
+export default function TicTacPage() {
   const WINNING_COMBINATIONS = useLoaderData();
 
   const dialogRef = useRef<IRestartDialog>(null);

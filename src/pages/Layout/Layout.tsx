@@ -63,7 +63,7 @@ export default function Layout(props) {
 
   ];
   return (<>
-        { navigation.state == 'loading' && <div className="absolute right-0 top-0 left-0 bottom-0 flex justify-content-center align-items-center"> <ProgressSpinner /> </div>}
+        { navigation.state == 'loading' && <div className="absolute right-0 top-0 left-0 bottom-0 flex justify-content-center align-items-center"> <ProgressSpinner /> 1</div>}
         <div className="absolute right-0 p-5"> <LayoutMessages /> </div>
 
         <div><img src={'/brands/' + import.meta.env.VITE_BRAND + '/images/logo_header.svg'} />  <img src={logo} /></div>

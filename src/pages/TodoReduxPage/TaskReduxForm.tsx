@@ -13,20 +13,43 @@ import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
 import { useActionState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useActionData,
+  useFetcher,
+  useNavigation,
+  useParams,
+  useSubmit,
+} from "react-router-dom";
+
+export async function taskReduxFormAction({ request, params }) {
+  const data = await request.formData();
+  console.log("taskReduxFormAction", Object.fromEntries(data.entries()), data);
+  return data;
+  //  return redirect("/todo-redux");
+}
 
 export function TaskReduxForm() {
   const params = useParams();
-  const data = useSelector<IStoreState,ITask>(state=>state.task.task)
+  const submit = useSubmit();
+  const data = useSelector<IStoreState, ITask>((state) => state.task.task);
+  const navigation = useNavigation();
+  const actionData: FormData = useActionData();
+  const isSubmitting = navigation.state == "submitting";
 
-/*   const { getTask } = useTodoQuery();
+  /*   const { getTask } = useTodoQuery();
   const { data, isPending } = getTask(params.taskId || "");
   const [initFormState,setInitFormState] = useState<ITask>(new Task());
  */
-     console.log("<TaskReduxForm /> getTaskAction",data?.name);
+  console.log("<TaskReduxForm /> getTaskAction", data?.name, isSubmitting);
+  console.log(
+    "<TaskReduxForm /> actionData return from taskReduxFormAction",
+    actionData && Object.fromEntries(actionData.entries())
+  );
 
-
-
+  /* 
     const [formState, formAction] = useActionState((prevtate, fd) => {
         console.log("TaskPage ddd",new Task(Object.fromEntries(fd.entries())));
 
@@ -35,15 +58,25 @@ export function TaskReduxForm() {
         { errors: null, flds: data || new Task() }
     );
 
+ */
 
-
-
-  return (  <>
-    
+  return (
+    <>
       <h1>
         TaskPage {params.taskId} {data?.name}
+        <button
+          onClick={() => {
+            submit(data || {}, { method: "POST" });
+            console.log("isSubmitting", isSubmitting);
+          }}
+          disabled={isSubmitting}
+        >
+          {" "}
+          {isSubmitting ? "Submitting..." : "Submit actioin programaticly"}
+        </button>
       </h1>
-    <form action={formAction}> 
+   
+      <Form method="post">
         <TextField
           id="outlined-basic"
           label="Name"
@@ -51,11 +84,9 @@ export function TaskReduxForm() {
           size="small"
           name="name"
           fullWidth={true}
-          margin='dense'
-          defaultValue={formState?.flds.name}
-          focused
+          margin="dense"
         />
-    
+
         <TextField
           id="outlined-basic"
           label="Count"
@@ -63,11 +94,8 @@ export function TaskReduxForm() {
           size="small"
           name="count"
           fullWidth={true}
-          margin='dense'
-          defaultValue={formState?.flds.count}
-          focused
+          margin="dense"
         />
-   
 
         <FormControl>
           <FormLabel id="demo-row-radio-buttons-group-label">Unit</FormLabel>
@@ -75,35 +103,33 @@ export function TaskReduxForm() {
             row
             aria-labelledby="demo-row-radio-buttons-group-label"
             name="unit"
-            value={formState?.flds.unit}
           >
             {Object.keys(UnitEnum).map((unit) => (
-              <FormControlLabel  value={unit} control={<Radio />}  label={unit} />
+              <FormControlLabel value={unit} control={<Radio />} label={unit} />
             ))}
           </RadioGroup>
         </FormControl>
 
         <div className=" mb-4">
-
-            <DateRangePicker
-                defaultValue={[dayjs(formState?.flds.start), dayjs(formState?.flds.end)]}
-            />
+          <input type="date" name="start" />
+          <input type="date" name="end" />
         </div>
-     
+
         <div className=" mb-4">
-          <FormControlLabel name="done"  control={<Checkbox checked={formState?.flds.done} />} label="Done" />
-  
+          <FormControlLabel name="done" control={<Checkbox />} label="Done" />
         </div>
 
         <Button
           type="submit"
           label="Save"
           size="small"
+          disabled={isSubmitting}
           /*   disabled={formState.isSubmitting} */
         />
-      </form>
-      <Link to="../.." relative="path">Back</Link>
-
+      </Form>
+      <Link to="../.." relative="path">
+        Back
+      </Link>
     </>
   );
 }
