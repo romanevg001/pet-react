@@ -59,6 +59,13 @@ export default function Layout(props) {
       template: itemRenderer,
       
     },
+    {
+      label: 'Excel',
+      to: 'excel',
+      template: itemRenderer,
+      
+    },
+    
     
 
   ];
@@ -78,6 +85,7 @@ export default function Layout(props) {
               <li><NavLink to='todo-redux'  className={({isActive}) => isActive ? 'active' : ''} >TodoRedux</NavLink></li>
               <li><NavLink to='search'  className={({isActive}) => isActive ? 'active' : ''} >search</NavLink></li>
               <li><NavLink to='tic-tac'  className={({isActive}) => isActive ? 'active' : ''} >tic-tac</NavLink></li>
+              <li><NavLink to='excel'  className={({isActive}) => isActive ? 'active' : ''} >Excel</NavLink></li>
             </menu>
           </div>
           <div className="flex-grow-1"><Outlet /></div>

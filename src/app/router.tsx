@@ -28,6 +28,7 @@ const TodoPage = lazy(()=>import("@/pages/TodoPage/TodoPage"));
 const TicTacPage = lazy(()=>import("@/pages/TicTacPage/TicTacPage"));
 const SystreePage = lazy(()=>import("@/pages/SystreePage/SystreePage"));
 const SystreeQueryPage = lazy(()=>import("@/pages/SystreePageQuery/SystreePageQuery"));
+const ExcelPage = lazy(()=>import("@/pages/ExcelPage/ExcelPage"));
 
 
 export const router = createBrowserRouter([
@@ -105,6 +106,10 @@ export const router = createBrowserRouter([
                 path: "todo-redux/todo-add",
                 element: <TaskActionForm />,
                 action: taskActionFormAction
+            },
+            {
+                path: "excel",
+                element: <ExcelPage />,
             },
             
             
