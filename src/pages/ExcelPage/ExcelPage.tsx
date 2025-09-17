@@ -1,7 +1,10 @@
 import { useHeaderMessages } from "@/hooks/useHeaderMessages";
-import { csvParser } from "./csvParser";
+import { csvParser, type THeaderRule } from "./csvParser";
 import { useState } from "react";
 import Cell from "./Cell";
+
+
+let _headerRules:THeaderRule[]= [];
 
 export default function ExcelPage() {
   const { addMessage } = useHeaderMessages();
@@ -15,7 +18,9 @@ export default function ExcelPage() {
     }
     const reader = new FileReader();
     reader.onload = () => {
-        setRows(csvParser(reader.result));
+        const {rows, headerRules} = csvParser(reader.result);
+        _headerRules = headerRules;
+        setRows(rows);
     };
     reader.onerror = (e) => {
       addMessage({
@@ -29,14 +34,15 @@ export default function ExcelPage() {
 
   return (
     <>
-      <input type="file" accept=".csv" onChange={loadFile} />
+      <div className="m-4"><input type="file" accept=".csv" onChange={loadFile} /></div>
+
       <div className="csv-table">
         
         {rows.map((row,i) => (
-          <div className={"flex " + ((i==0) ? 'csv-table-header':'')} key={'row_' + i} >
+          <div className={"row  " + ((i==0) ? 'csv-table-header':'')} key={'row_' + i} >
             {row.map((cell,j) => (
-                <div key={'cell_' + j} style={{'width': (100/row.length)+'%'}}>
-                    <Cell value={cell} />
+                <div key={'cell_' + j} className="cell" style={{'width': (100/row.length)+'%'}}>
+                    {(i == 0 || j == 0) ? cell : <Cell value={cell} rules={_headerRules[j]} />}
                 </div>
             ))}
           </div>

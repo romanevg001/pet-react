@@ -1,5 +1,6 @@
-;Hotel name;Hotel stars;Suite type;Guest count;Price
+;Hotel name;Hotel stars [list,[1,2,3,4,5]];Suite type [list,[Junior,Standart,Executive,Penthouse,Presidential,Royal]];Guest count [restrict_number,[1,4]];Price [currency]
 >;Four Seasone;5;;;
 >>;;;Standart;2;1200
->>;;;Standart Double;2;2500
+>>;;;Executive;2;2500
 >>;;;Standart;3;1500
+

@@ -1,6 +1,22 @@
 .csv-table {
-    border: 1px solid #ccc;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
     .csv-table-header {
         background-color: bisque;
+    }
+    .row {
+        display: flex;
+        background-color: rgb(196, 255, 199);
+       // padding-left: 1px;
+
+    }
+    .cell {
+        border-top: 1px solid #000;
+        border-left: 1px solid #000;
+    }
+
+    input, select {
+        border: 0 solid;
+        width: 100%;
     }
 }
