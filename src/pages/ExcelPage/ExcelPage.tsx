@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { IStoreState } from "@/reduxstore";
 import { excelSlice } from "@/reduxstore/excel-slice";
 import type { IcsvParser } from "./excelPage.model";
-import { csvParser } from "./CSVParser";
+import { csvParser } from "./csvParser";
 
 
 

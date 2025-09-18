@@ -19,10 +19,13 @@ export type THeaderRule = {
 ;
 
 
-export const headerRuleDefault ={
+export const headerRuleDefault = {
     [TypesEnum.string]: {type: TypesEnum.string, dataRules: undefined},
+    [TypesEnum.currency]: {type: TypesEnum.currency, dataRules: undefined},
+    [TypesEnum.calendar]: {type: TypesEnum.calendar, dataRules: undefined},
+    [TypesEnum.number]: {type: TypesEnum.number, dataRules: undefined},
     [TypesEnum.restrict_number]: {type: TypesEnum.restrict_number, dataRules: {min: 0, max: 5 }},
-    [TypesEnum.list]: {type: TypesEnum.string, dataRules: []},
+    [TypesEnum.list]: {type: TypesEnum.list, dataRules: []},
 }
 
 export interface IcsvParser {
