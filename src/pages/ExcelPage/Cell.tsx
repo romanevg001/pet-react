@@ -1,4 +1,4 @@
-import { type THeaderRule, TypesEnum } from "./csvParser";
+import { TypesEnum, type THeaderRule } from "./excelPage.model";
 
 export interface ICellProps {
     value: any;
@@ -6,7 +6,6 @@ export interface ICellProps {
 }
 
 export default function Cell({value, rules}: ICellProps) {
-    console.log(value, rules)
     return (<>
         {(rules.type == TypesEnum.string) && <input type="text" defaultValue={value} /> }
         {(rules.type == TypesEnum.number) && <input type="number" defaultValue={value} /> }

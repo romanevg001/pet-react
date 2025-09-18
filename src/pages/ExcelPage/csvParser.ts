@@ -1,26 +1,9 @@
-
-export enum TypesEnum {
-    'string' = 'string',
-    'currency' = 'currency',
-    'number' = 'number',
-    'restrict_number' = 'restrict_number',
-    'calendar' = 'calendar',
-    'list' = 'list',
-    'gap' = 'gap'
-}
-
-export type THeaderRule = {
-    type: TypesEnum,
-    dataRules: any | undefined
-}
-| {type: TypesEnum.restrict_number, dataRules: {min: number, max: number }}
-| {type: TypesEnum.list, dataRules: string[]}
-;
+import { TypesEnum, type IcsvParser, type THeaderRule } from "./excelPage.model";
 
 
-export function csvParser(fileText: string | ArrayBuffer | null) {
+export function csvParser(fileText: string | ArrayBuffer | null): IcsvParser {
     const str = String(fileText).split("\n");
-    const rows = str.map(line => line?.split(';'));
+    const rows = str.reduce((res,line) => { if (line.trim()){res.push(line?.split(';'))} return res; },[] as string[][]);
 
     const headerRules: THeaderRule[] = rows[0].map(cell => {
 
@@ -47,6 +30,5 @@ export function csvParser(fileText: string | ArrayBuffer | null) {
     rows[0] = rows[0].map(cell => cell.split('[')[0]);
 
 
-  console.log({rows, headerRules});
   return {rows, headerRules};
 }

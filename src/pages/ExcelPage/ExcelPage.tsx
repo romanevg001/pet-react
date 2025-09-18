@@ -1,53 +1,60 @@
 import { useHeaderMessages } from "@/hooks/useHeaderMessages";
-import { csvParser, type THeaderRule } from "./csvParser";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Cell from "./Cell";
+import type { ISettingDialog } from "./SettingDialog";
+import SettingDialog from "./SettingDialog";
+import { useDispatch, useSelector } from "react-redux";
+import type { IStoreState } from "@/reduxstore";
+import { excelSlice } from "@/reduxstore/excel-slice";
+import type { IcsvParser } from "./excelPage.model";
+import { csvParser } from "./CSVParser";
 
 
-let _headerRules:THeaderRule[]= [];
 
 export default function ExcelPage() {
   const { addMessage } = useHeaderMessages();
-  const [rows,setRows] = useState<string[][]>([]);
+  const dialogRef = useRef<ISettingDialog>(null);
+  const dispatch = useDispatch();
+  const {rows, headerRules} = useSelector<IStoreState, IcsvParser>((state) => state.excel.data);
 
+  
+    console.log('<ExcelPage /> render')
 
   function loadFile(e) {
     const file = e.target.files[0];
-    if (!file) {
-      return;
-    }
+    if (!file) {   return; }
     const reader = new FileReader();
     reader.onload = () => {
-        const {rows, headerRules} = csvParser(reader.result);
-        _headerRules = headerRules;
-        setRows(rows);
+        const res = csvParser(reader.result);
+        console.log(res);
+        dispatch(excelSlice.actions.setFileData(res))
     };
     reader.onerror = (e) => {
-      addMessage({
-        severity: "error",
-        detail: "Error reading the file. Please try again.",
-      });
+      addMessage({ severity: "error",   detail: "Error reading the file. Please try again."  });
     };
-    reader.readAsText(file);
+    reader.readAsText(file); 
   }
-            //    <div className="csv-table-header" key={'h_' + i} style={{'width': (100/tableHeader.length)+'%'}}>{cell}</div>
 
   return (
     <>
       <div className="m-4"><input type="file" accept=".csv" onChange={loadFile} /></div>
 
-      <div className="csv-table">
+      {!!rows.length && <div className="csv-table">
         
-        {rows.map((row,i) => (
-          <div className={"row  " + ((i==0) ? 'csv-table-header':'')} key={'row_' + i} >
-            {row.map((cell,j) => (
-                <div key={'cell_' + j} className="cell" style={{'width': (100/row.length)+'%'}}>
-                    {(i == 0 || j == 0) ? cell : <Cell value={cell} rules={_headerRules[j]} />}
+        {rows.map((row,row_i) => (
+          <div className={"row  " + ((row_i==0) ? 'csv-table-header':'')} key={'row_' + row_i} >
+            {row.map((cell,cell_i) => (
+                <div key={'cell_' + cell_i} className="cell" style={{'width': (100/row.length)+'%'}}>
+                    {row_i == 0 && <div className="setting" onClick={()=>{dialogRef.current?.open({value:cell,rules:headerRules[cell_i], position: cell_i});}}></div>}
+                    {(row_i == 0 || cell_i == 0) ? cell : <Cell value={cell} rules={headerRules[cell_i]} />}
                 </div>
             ))}
           </div>
-        ))}
-      </div>
+        ))} 
+      </div>}
+
+      <SettingDialog ref={dialogRef}></SettingDialog>
+
     </>
   );
 }

@@ -19,7 +19,7 @@ export default function TaskPage() {
   const params = useParams();
   const { getTask } = useTodoQuery();
   const { data, isPending } = getTask(params.taskId || "");
-  const [initFormState,setInitFormState] = useState<ITask>(new Task());
+  //const [initFormState,setInitFormState] = useState<ITask>(new Task());
 
   const [formState, formAction] = useActionState(async (prevtate, fd) => {
      console.log("TaskPage ddd",new Task(Object.fromEntries(fd.entries())));
